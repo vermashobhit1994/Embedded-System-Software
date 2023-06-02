@@ -25,7 +25,13 @@
                                 remote_url is name of remote repository url
               Step7-2: check whether remote repo name is been added or not 
                           git remote -v
-              Step7-3: checkout remote branch into new branch in local repository
+              Step7-3: Checkout contents of remote repository but don't apply changes to local repository
+                         git fetch localRemoteRepo
+                          where localRemoteRepo is name used when assign url of remote repository.
+              Step7-4: check if remote contents is accessed or not  
+                            git branch -a
+                             show all branches including local and remote branch
+              Step7-5: checkout remote branch into new branch in local repository
                          git checkout -b newbranch localRemoteRepo/remoteBranch
                           where newbranch is branch name that we want to create in local repository that contains contents of remote branch.
                                  localRemoteRepo is name of repo used to access remote url
