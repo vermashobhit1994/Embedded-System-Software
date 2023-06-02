@@ -1,0 +1,54 @@
+1. How to commit source code to specific branch of remote repository from specific commit of local repository 
+    Step1: configure user name and user email
+           git config --global user.email "user_email"
+           git config --global user.name  "user_name"
+           where user_email is email id used while creating account on git.
+           where user_name is name of account shown in git account.
+    Step2: Check whether above details are configured or not 
+            git config --list
+    Step3: Add the files that you want to add to remote repository
+            git add files_name
+            where files_name either contains folders or files
+    Step4: check what files has been added to staging area. 
+             git status 
+             where files in green color shows the files that have been added.
+    Step5:  commit the files to add to .git local repository
+              git commit -m "message"
+              where message is message that we want to add while commiting files
+    Step6: check the commit files 
+             git log --oneline --decorate
+              where oneline shows 7character of SHA-ID and decorate shows HEAD and branch to specific commit.
+    Step7: Checkout remote branch i.e. pointing HEAD to remote branch 
+              Step7-1: Add the remote branch url with specific name that is to be used while accessing url of remote branch
+                        git remote add localRemoteRepo remote_url
+                         where localRemoteRepo is name used to access remote repository url
+                                remote_url is name of remote repository url
+              Step7-2: check whether remote repo name is been added or not 
+                          git remote -v
+              Step7-3: checkout remote branch into new branch in local repository
+                         git checkout -b newbranch localRemoteRepo/remoteBranch
+                          where newbranch is branch name that we want to create in local repository that contains contents of remote branch.
+                                 localRemoteRepo is name of repo used to access remote url
+                                 remoteBranch is name of remote branch from which we want to access contents.
+   Step8: add commit (contents) from local branch to remote branch
+            Step8-1: checkout branch that contains SHAID
+                      git checkout master
+                        where master is branch name
+             Step8-2: Get SHAID that we want to add
+                       git log --online
+                        Here copy 7 character SHAID that contains contens that we want to add
+             Step8-3: checkout to branch that we've created in Step7
+                       git checkout newbranch
+             Step8-4: add commit into newbranch 
+                        git cherry-pick commidId
+                         where commitId is SHAID used while commiting files 
+              Step8-5: check if commit is added to current branch or not 
+                           git log --oneline
+   Step9:  Upload data from local repository branch to remote repository branch
+            git push localRemoteRepo localBranch:RemoteBranch
+                 where localRemoteRepo is name used to access remote url
+                        localBranch is name of local branch from where contents are to be transferred to remote repository
+                        RemoteBranch is name of remote branch to where contents are to be transferred.
+                        
+                         
+              Step7-4:  
